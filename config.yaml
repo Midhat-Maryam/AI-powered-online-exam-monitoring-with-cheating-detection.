@@ -1,0 +1,69 @@
+video:
+  source: 0
+  resolution: [1280, 720]
+  fps: 30
+  recording_path: "./recordings"
+
+screen:
+  monitor_index: 0
+  fps: 15
+  recording: false
+
+detection:
+  face:
+    detection_interval: 5
+    min_confidence: 0.8
+  eyes:
+    gaze_threshold: 2
+    blink_threshold: 0.3
+    gaze_sensitivity: 15
+    consecutive_frames: 3
+  mouth:
+    movement_threshold: 3
+  multi_face:
+    alert_threshold: 5
+  objects:
+    min_confidence: 0.65
+    detection_interval: 5
+    max_fps: 5
+  audio_monitoring:
+    enabled: false
+    sample_rate: 16000
+    energy_threshold: 0.001
+    zcr_threshold: 0.35
+    whisper_enabled: false
+    whisper_model: "tiny.en"
+
+logging:
+  log_path: "./logs"
+  alert_cooldown: 10
+  alert_system:
+    voice_alerts: true
+    alert_volume: 0.8
+    cooldown: 10
+
+global:
+  output_path: "./reports"
+
+reporting:
+  output_dir: "./reports/generated"
+  image_dir: "./reports/generated/images"
+  wkhtmltopdf_path: "C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe"
+  severity_levels:
+    FACE_DISAPPEARED: 1
+    GAZE_AWAY: 2
+    MOUTH_MOVING: 3
+    MULTIPLE_FACES: 4
+    OBJECT_DETECTED: 5
+    AUDIO_DETECTED: 3
+
+ai:
+  model: "gpt-4o"
+  analysis_interval: 15
+  risk_weights:
+    FACE_DISAPPEARED: 20
+    GAZE_AWAY: 15
+    MOUTH_MOVING: 10
+    MULTIPLE_FACES: 35
+    OBJECT_DETECTED: 30
+    AUDIO_DETECTED: 10
